@@ -3,7 +3,7 @@ pipeline{
         jdk 'myjava'
         maven 'mymaven'
     }
-	agent any
+	agent { label 'ubuntu-node' }
       stages{
            stage('Checkout'){
 	    
@@ -38,13 +38,6 @@ pipeline{
                    junit 'target/surefire-reports/*.xml'
                }
            }	
-          }
-           stage('MetricCheck'){
-              
-              steps{
-                  sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
-              }
-              
           }
           stage('Package'){
 		  
