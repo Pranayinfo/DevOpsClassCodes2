@@ -1,6 +1,5 @@
 - hosts: webservers
   become: true
-  become_user: root
   tasks:
   - name: clone a repo
     git: repo=https://github.com/Pranayinfo/DevOpsClassCodes2.git dest=/tmp/jenkinsdir
