@@ -1,0 +1,11 @@
+- hosts: webservers
+  become: true
+  become_user: root
+  tasks:
+  - name: clone a repo
+    git: repo=https://github.com/Pranayinfo/DevOpsClassCodes2.git dest=/tmp/jenkinsdir
+  - name: build docker file
+    command: chdir=/tmp/jenkinsdir docker build -t myapp:0.01.test1 .
+  - name: create container
+    command: docker run -itd -p 80:82 myapp:0.01.test1
+  
