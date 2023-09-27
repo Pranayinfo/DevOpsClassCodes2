@@ -7,5 +7,5 @@
   - name: build docker file
     command: chdir=/tmp/jenkinsdir docker build -t myapp:0.01.test1 .
   - name: create container
-    command: docker run -itd -p 80:82 myapp:0.01.test1
+    command: docker run -dt --name mywebapp -P myapp:0.01.test1
   
